@@ -1,8 +1,9 @@
 ;(function ($, window, undefined) {
 
   var Notification = function(settings){
-    var o, notification, container, left, right, htmlTitle, htmlContent, timeHTML,
+    var o, notification, container, left, right, timeHTML,
         image, iconType, icon,
+        content = '',
         _this = this;
 
     o = $.extend(true, {}, $.notification.options);
@@ -39,19 +40,17 @@
     left = $("<div class='left'>");
     right = $("<div class='right'>");
 
-    htmlTitle = "";
     if(settings.title != undefined) {
-      htmlTitle = '<div class="title">' + settings.title + '</div>';
+      content += '<div class="title">' + settings.title + '</div>';
       notification.addClass("with-title");
     }
-
-    htmlContent = "";
+    
     if(settings.content != undefined) {
-      htmlContent = '<div class="text">' + settings.content + '</div>';
+      content += '<div class="text">' + settings.content + '</div>';
     }
 
     $("<div>", {
-      html: htmlTitle + htmlContent,
+      html: content,
       'class': 'inner'
     }).appendTo(right);
 
