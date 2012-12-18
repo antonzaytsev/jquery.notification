@@ -1,10 +1,16 @@
+/**
+ * Author: Anton Zaytsev (me@antonzaytsev.com)
+ * Some styles from Owl jquery library
+ *
+ * version: 0.8.0
+ */
 ;(function ($, window, undefined) {
 
   var Notific = function(settings){
     var o, notification, container, left, right, timeHTML,
-        image, iconType, icon,
-        content = '',
-        _this = this;
+      image, iconType, icon,
+      content = '',
+      _this = this;
 
     o = $.extend(true, {}, $.notification.options);
     settings = $.extend(o, settings);
@@ -44,7 +50,7 @@
       content += '<div class="title">' + settings.title + '</div>';
       notification.addClass("with-title");
     }
-    
+
     if(settings.content != undefined) {
       content += '<div class="text">' + settings.content + '</div>';
     }
@@ -109,8 +115,6 @@
       }, 5000);
     }
 
-    notification.prependTo(container);
-
     if (settings.timeout) {
       setTimeout(function() {
         _this.hide();
@@ -129,12 +133,16 @@
   };
 
   Notific.prototype.show = function(){
-    _this = this;
+    var _this = this;
 
     if ($(".notification", this.container).length == 0) {
       this.block.addClass("flipInX");
     }
     this.block.addClass("animated fadeInLeftMiddle fast");
+
+    if (this.block.parents().length == 0) {
+      this.block.prependTo(this.container);
+    }
 
     setTimeout(function(){
       _this.block.removeClass("flipInX animated fadeInLeftMiddle fast");
@@ -149,7 +157,7 @@
   };
 
   Notific.prototype.update_timepast = function(){
-    _this = this;
+    var _this = this;
     _this.timePlaceholder.find('.timeago').text(timeSince(_this.timePlaceholder.data('posted')));
   }
 
@@ -175,7 +183,7 @@
   };
 
   function timeSince(time){
-    var time_formats, seconds;
+    var time_formats, seconds, format;
 
     time_formats = [
       [2, "One second", "1 second from now"], // 60*2

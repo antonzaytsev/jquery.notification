@@ -5,7 +5,7 @@
   z-index: 1000;
 
   overflow: hidden;
-  
+
   width: 400px;
   margin-left: -200px;
 
@@ -44,7 +44,7 @@
   right: 5px;
   top: 7px;
   z-index: 1;
-  
+
   cursor: pointer;
 
   width: 15px;
@@ -165,7 +165,7 @@
   margin-left: 50px;
   padding: 10px;
   min-height: 18px;
-  width: 350px;
+  width: 330px;
 }
 .notification .right .time {
   font-size: 9px;
@@ -244,26 +244,26 @@
 }
 
 @-webkit-keyframes fadeInLeftMiddle {
-	0% {
-		opacity: 0.5;
-		-webkit-transform: translateX(-400px);
-	}
+  0% {
+    opacity: 0.5;
+    -webkit-transform: translateX(-400px);
+  }
 
-	100% {
-		opacity: 1;
-		-webkit-transform: translateX(0);
-	}
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
 }
 @-moz-keyframes fadeInLeftMiddle {
-	0% {
-		opacity: 0.5;
-		-moz-transform: translateX(-400px);
-	}
+  0% {
+    opacity: 0.5;
+    -moz-transform: translateX(-400px);
+  }
 
-	100% {
-		opacity: 1;
-		-moz-transform: translateX(0);
-	}
+  100% {
+    opacity: 1;
+    -moz-transform: translateX(0);
+  }
 }
 @-ms-keyframes fadeInLeftMiddle {
 	0% {
@@ -277,26 +277,26 @@
 	}
 }
 @-o-keyframes fadeInLeftMiddle {
-	0% {
-		opacity: 0.5;
-		-o-transform: translateX(-400px);
-	}
+  0% {
+    opacity: 0.5;
+    -o-transform: translateX(-400px);
+  }
 
-	100% {
-		opacity: 1;
-		-o-transform: translateX(0);
-	}
+  100% {
+    opacity: 1;
+    -o-transform: translateX(0);
+  }
 }
 @keyframes fadeInLeftMiddle {
-	0% {
-		opacity: 0.5;
-		transform: translateX(-400px);
-	}
+  0% {
+    opacity: 0.5;
+    transform: translateX(-400px);
+  }
 
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .notification.fadeInLeftMiddle {
