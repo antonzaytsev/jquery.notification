@@ -79,7 +79,6 @@
 }
 
 .notification .right, .notification .left {
-  width: 350px;
   height: 100%;
   float: left;
   position: relative;
@@ -164,11 +163,9 @@
 
 .notification .right {
   margin-left: 50px;
-}
-.notification .right .inner {
   padding: 10px;
-  min-height: 32px;
-  width: auto;
+  min-height: 18px;
+  width: 350px;
 }
 .notification .right .time {
   font-size: 9px;

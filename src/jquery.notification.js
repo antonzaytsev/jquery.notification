@@ -1,6 +1,6 @@
 ;(function ($, window, undefined) {
 
-  var Notification = function(settings){
+  var Notific = function(settings){
     var o, notification, container, left, right, timeHTML,
         image, iconType, icon,
         content = '',
@@ -49,10 +49,7 @@
       content += '<div class="text">' + settings.content + '</div>';
     }
 
-    $("<div>", {
-      html: content,
-      'class': 'inner'
-    }).appendTo(right);
+    right.html(content);
 
     if (settings.img != undefined) {
       image = $("<div>", {
@@ -102,7 +99,7 @@
           posted: Number(new Date())
         }
       });
-      timeHTML.appendTo(right.find('.inner'));
+      timeHTML.appendTo(right);
 
       this.timePlaceholder = timeHTML;
       this.update_timepast();
@@ -131,7 +128,7 @@
     }
   };
 
-  Notification.prototype.show = function(){
+  Notific.prototype.show = function(){
     _this = this;
 
     if ($(".notification", this.container).length == 0) {
@@ -144,21 +141,22 @@
     }, 500);
   };
 
-  Notification.prototype.hide = function(){
+  Notific.prototype.hide = function(){
     this.block.removeClass("flipInX animated fadeInLeftMiddle fast");
     this.block.fadeOut('normal', function(){
       $(this).remove();
     });
   };
 
-  Notification.prototype.update_timepast = function(){
+  Notific.prototype.update_timepast = function(){
     _this = this;
     _this.timePlaceholder.find('.timeago').text(timeSince(_this.timePlaceholder.data('posted')));
   }
 
   $.notification = function(settings) {
-    var notification = new Notification(settings);
+    var notification = new Notific(settings);
     notification.show();
+
     return this;
   };
 
@@ -199,10 +197,6 @@
     ];
 
     seconds = Math.round((new Date - time) / 1000);
-
-    // Remove this ?
-    if (seconds < 0)
-      seconds = 0
 
     for(var i in time_formats){
       format = time_formats[i];
