@@ -1,12 +1,11 @@
 ;(function ($, window, undefined) {
 
   var Notification = function(settings){
-    _this = this;
     var o, notification, container, left, right, htmlTitle, htmlContent, timeHTML,
-        image, iconType, icon;
+        image, iconType, icon,
+        _this = this;
 
-    o = jQuery.extend(true, {}, $.notification.options);
-
+    o = $.extend(true, {}, $.notification.options);
     settings = $.extend(o, settings);
 
     container = $("#notifications");
@@ -15,7 +14,7 @@
     }
     this.container = container;
 
-    _this.id = Number(new Date);
+    this.id = Number(new Date);
 
     notification = $("<div>",{
       'class': 'notification',
@@ -106,8 +105,8 @@
       });
       timeHTML.appendTo(right.find('.inner'));
 
-      _this.timePlaceholder = timeHTML;
-      _this.update_timepast();
+      this.timePlaceholder = timeHTML;
+      this.update_timepast();
 
       setInterval(function(){
         _this.update_timepast();
