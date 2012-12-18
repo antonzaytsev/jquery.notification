@@ -4,7 +4,8 @@ jQuery(function($) {
     $.notification({
       title: "This is the jQuery Notification plugin",
       content: "Pretty cool, huh?",
-      img: "static/demo/thumb.png",
+//      img: "static/demo/thumb.png",
+//      icon
       border: false
     });
   });

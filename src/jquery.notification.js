@@ -6,9 +6,34 @@
  */
 ;(function ($, window, undefined) {
 
+  $.notification = function(settings) {
+    var notification = new Notific(settings);
+    notification.show();
+
+    return this;
+  };
+
+  $.notification.options = {
+    title: undefined,
+    content: undefined,
+    timeout: 0,
+    img: undefined,
+    border: true,
+    fill: false,
+    showTime: false,
+    click: undefined,
+    icon: undefined,
+    color: undefined,
+    error: false,
+    showStyle: 'top' // left
+  };
+
+  $.notification.global = {
+    limit: 5
+  };
+
   var Notific = function(settings){
-    var o, notification, container, left, right, timeHTML,
-      image, iconType, icon,
+    var o, notification, container, left, right, timeHTML, image, iconType, icon,
       content = '',
       _this = this;
 
@@ -78,7 +103,7 @@
         iconType = settings.icon;
       }
       else {
-        if(settings.error!=true) {
+        if(settings.error != true) {
           iconType = '"';
         }
         else {
@@ -130,6 +155,8 @@
         }
       });
     }
+
+    this.constructor.checkLimit();
   };
 
   Notific.prototype.show = function(){
@@ -157,32 +184,24 @@
   };
 
   Notific.prototype.update_timepast = function(){
-    var _this = this;
-    _this.timePlaceholder.find('.timeago').text(timeSince(_this.timePlaceholder.data('posted')));
-  }
-
-  $.notification = function(settings) {
-    var notification = new Notific(settings);
-    notification.show();
-
-    return this;
+    this.timePlaceholder.find('.timeago').text(this.constructor.timeSince(this.timePlaceholder.data('posted')));
   };
 
-  $.notification.options = {
-    title: undefined,
-    content: undefined,
-    timeout: 0,
-    img: undefined,
-    border: true,
-    fill: false,
-    showTime: false,
-    click: undefined,
-    icon: undefined,
-    color: undefined,
-    error: false
+  Notific.checkLimit = function(){
+    if ($.notification.global.limit > 0) {
+      var list = $('#notifications .notification');
+      var limit = $.notification.global.limit;
+
+      if (list.length >= limit) {
+        var reversed_list = $.makeArray(list).reverse();
+        for(var i=0; i<=(list.length-limit); i++) {
+          $(reversed_list[i]).data('notification').hide();
+        }
+      }
+    }
   };
 
-  function timeSince(time){
+  Notific.timeSince = function(){
     var time_formats, seconds, format;
 
     time_formats = [
@@ -218,6 +237,6 @@
     }
 
     return time;
-  }
+  };
 
 })(jQuery, window);

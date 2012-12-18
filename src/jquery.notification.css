@@ -27,19 +27,52 @@
   box-shadow: white 0px -1px 0px inset, rgba(0,0,0,0.5) 0px 4px 30px;
 }
 
-.notification {
-  background: #fff;
-  background: -webkit-linear-gradient(#fff, #dbdbdb);
-  background: -moz-linear-gradient(#fff, #dbdbdb);
+#notifications .notification {
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #dbdbdb 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dbdbdb)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffffff 0%,#dbdbdb 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffffff 0%,#dbdbdb 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ffffff 0%,#dbdbdb 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 0%,#dbdbdb 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
 
   position: relative;
+  border-top: 1px solid #c1c1c1;
+
+  -webkit-transition: border-bottom-left-radius .3s, border-bottom-right-radius .3s;
+
+  *zoom: 1;
 }
-.notification.clickable {
+
+#notifications .notification:first-child{
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+
+  border-top: none;
+}
+#notifications .notification:last-child{
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+
+#notifications .notification.clickable {
   cursor: pointer;
 }
 
 
-.notification .close{
+#notifications .notification .close{
   position: absolute;
   right: 5px;
   top: 7px;
@@ -63,37 +96,35 @@
 
   -webkit-transition: opacity .2s;
 }
-.notification:hover .close {
+#notifications .notification:hover .close {
   opacity: 0.3;
   filter:alpha(opacity=30);
 }
-.notification .close:before {
+#notifications .notification .close:after {
   content: "✖";
   position: relative;
   top: 0;
   left: 0;
+  zoom: 1;
 }
-.notification .close:hover {
+#notifications .notification .close:hover {
   opacity: 1;
   filter:alpha(opacity=100);
 }
 
-.notification .right, .notification .left {
-  height: 100%;
-  float: left;
-  position: relative;
-}
 
-.notification .left {
+#notifications .notification .left {
   height: 100%;
-  width: 30px;
-  padding: 10px;
-  position: absolute;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  width: 50px;
   overflow: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  *zoom: 1;
 }
-.notification .left:after {
+#notifications .notification .left:after {
   content: '';
   background: #c1c1c1;
   width: 1px;
@@ -102,7 +133,7 @@
   top: 0px;
   right: 0px;
 }
-.notification .left .img {
+#notifications .notification .left .img {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -121,11 +152,11 @@
   top: 50%;
   margin-top: -15px;
 }
-.notification .left .img.no-border {
+#notifications .notification .left .img.no-border {
   box-shadow: none;
   border: none;
 }
-.notification .left .img.fill {
+#notifications .notification .left .img.fill {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -143,7 +174,7 @@
 
   background-color: #333;
 }
-.notification .left .icon {
+#notifications .notification .left .icon {
   position: absolute;
   top: 0;
   left: 0;
@@ -152,53 +183,56 @@
   text-align: center;
 
   font-size: 40px;
-  line-height: 28px;
+  line-height: 0.98;
   font-family: entypo;
   text-shadow: white 0 1px 0;
 }
-.notification.with-title .left .icon {
+#notifications .notification.with-title .left .icon {
   font-size: 60px;
-  line-height: 38px;
 }
 
-.notification .right {
+
+#notifications .notification .right {
   margin-left: 50px;
   padding: 10px;
   min-height: 18px;
   width: 330px;
+  position: relative;
+
+  zoom: 1;
 }
-.notification .right .time {
+#notifications .notification .right .time {
   font-size: 9px;
   margin-top: 2px;
   opacity: 0.4;
 }
-.notification .right .title {
+#notifications .notification .right .title {
   font-size: 14px;
   margin: 0;
   font-weight: bold;
 }
-.notification .right .text {
+#notifications .notification .right .text {
   font-size: 14px;
   margin: 0;
 }
 
-.notification .right .timepast{}
-.notification .right .timepast .timeago{
+#notifications .notification .right .timepast{}
+#notifications .notification .right .timepast .timeago{
   font-weight: bold;
 }
 
 
-.notification:first-child .img.fill {
+#notifications .notification:first-child .img.fill {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
   border-top-left-radius: 5px;
 }
-.notification:last-child .img.fill {
+#notifications .notification:last-child .img.fill {
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-.notification:after {
+#notifications .notification:after {
   content: ".";
   visibility: hidden;
   display: block;
@@ -207,7 +241,7 @@
   font-size: 0;
 }
 
-.notification.error {
+#notifications .notification.error {
   background: #FA565D;
   background: -webkit-linear-gradient(#FA565D, #D1363D);
   background: -moz-linear-gradient(#FA565D, #D1363D);
@@ -215,15 +249,15 @@
   color: white;
   text-shadow: rgba(0,0,0,0.4) 0 1px 1px;
 }
-.notification.error .left:after {
+#notifications .notification.error .left:after {
   background: rgba(255,255,255,0.5);
   box-shadow: rgba(0,0,0,0.4) 0 1px 1px;
 }
-.notification.error .close{
+#notifications .notification.error .close{
   color: white;
 }
 
-.notification.animated {
+#notifications .notification.animated {
   -webkit-animation: 1s ease;
   -moz-animation: 1s ease;
   -ms-animation: 1s ease;
@@ -235,7 +269,7 @@
   -o-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-.notification.animated.fast {
+#notifications .notification.animated.fast {
   -webkit-animation-duration: 0.4s;
   -moz-animation-duration: 0.4s;
   -ms-animation-duration: 0.4s;
@@ -299,7 +333,7 @@
   }
 }
 
-.notification.fadeInLeftMiddle {
+#notifications .notification.fadeInLeftMiddle {
   -webkit-animation-name: fadeInLeftMiddle;
   -moz-animation-name: fadeInLeftMiddle;
   -ms-animation-name: fadeInLeftMiddle;
@@ -403,7 +437,7 @@
   }
 }
 
-.notification.flipInX {
+#notifications .notification.flipInX {
   -webkit-backface-visibility: visible !important;
   -webkit-animation-name: flipInX;
   -moz-backface-visibility: visible !important;
@@ -426,27 +460,4 @@
   url('font/entypo.svg#entypo') format('svg');
   font-weight: normal;
   font-style: normal;
-}
-
-#notifications .notification:first-child{
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-
-  border-bottom: 1px solid #c1c1c1;
-}
-#notifications .notification:last-child{
-  border-bottom: none;
-
-  -moz-border-radius-bottomleft: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  border-top-bottom-radius: 5px;
-
-  -moz-border-radius-bottomleft: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
