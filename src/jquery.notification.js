@@ -38,7 +38,8 @@
     'pictures'  : 'p',
     'message'   : '',
     'tick'      : 'W',
-    'cloud'     : 'y'
+    'cloud'     : 'y',
+    'pointer'   : 'G'
   };
 
   $.notification.global = {
@@ -127,7 +128,7 @@
       iconType = $.notification.entypo[$.notification.global.default_icon];
 
       if (settings.icon != undefined) {
-        iconType = settings.icon;
+        iconType = $.notification.entypo[settings.icon] || settings.icon;
       }
 
       icon = $('<div class="icon">').html(iconType);

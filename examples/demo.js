@@ -43,7 +43,7 @@ jQuery(function($) {
         $.notification({
           content: 'This notification was just created.',
           title: 'Callback!',
-          icon: 'G'
+          icon: 'pointer'
         });
       }
     });
