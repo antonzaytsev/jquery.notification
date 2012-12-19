@@ -2,7 +2,7 @@
  * Author: Anton Zaytsev (me@antonzaytsev.com)
  * Some styles from Owl jquery library
  *
- * version: 0.8.0
+ * version: 0.8.1
  */
 ;(function ($, window, undefined) {
 
