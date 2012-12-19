@@ -53,7 +53,15 @@ jQuery(function($) {
     $.notification({
       title: "Error notification",
       content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.",
-      error: true
+      type: 'error'
+    });
+  });
+
+  $('#success').bind('click', function() {
+    $.notification({
+      title: "Success notification",
+      content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.",
+      type: 'success'
     });
   });
   

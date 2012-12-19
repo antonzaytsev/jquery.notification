@@ -9,8 +9,7 @@
   $.notification = function(settings) {
     var notification = new Notific(settings);
     notification.show();
-
-    return this;
+    return notification;
   };
 
   $.notification.options = {
@@ -25,11 +24,26 @@
     icon: undefined,
     color: undefined,
     error: false,
+    type: false,
     showStyle: 'top' // left
   };
 
+  $.notification.entypo = {
+    'thumbs-up' : '&#128077;',
+    'mobile'    : '&#128241;',
+    'warning'   : 'c', // &#9888;
+    'mail'      : '✉', // &#9993;
+    'clock'     : 'N',
+    'add_member': '&#x2010;',
+    'pictures'  : 'p',
+    'message'   : '',
+    'tick'      : 'W',
+    'cloud'     : 'y'
+  };
+
   $.notification.global = {
-    limit: 5
+    limit: 5,
+    default_icon: 'message'
   };
 
   var Notific = function(settings){
@@ -57,8 +71,19 @@
 
     this.block = notification;
 
-    if (settings.error == true) {
-      notification.addClass("error");
+    if (!settings.type && settings.error) {
+      settings.type = 'error';
+    }
+
+    if (settings.type) {
+      notification.addClass('type-'+settings.type);
+
+      if (!settings.icon) {
+        switch(settings.type) {
+          case 'success': settings.icon = $.notification.entypo['tick']; break;
+          case 'error': settings.icon = $.notification.entypo['warning']; break;
+        }
+      }
     }
 
     $("<a>", {
@@ -99,17 +124,12 @@
       }
     }
     else {
+      iconType = $.notification.entypo[$.notification.global.default_icon];
+
       if (settings.icon != undefined) {
         iconType = settings.icon;
       }
-      else {
-        if(settings.error != true) {
-          iconType = '"';
-        }
-        else {
-          iconType = 'c';
-        }
-      }
+
       icon = $('<div class="icon">').html(iconType);
 
       if (settings.color != undefined) {
@@ -201,7 +221,7 @@
     }
   };
 
-  Notific.timeSince = function(){
+  Notific.timeSince = function(time){
     var time_formats, seconds, format;
 
     time_formats = [
@@ -223,7 +243,7 @@
       [58060800000, "centuries", 2903040000] // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
     ];
 
-    seconds = Math.round((new Date - time) / 1000);
+    seconds = Math.round((Number(new Date) - time) / 1000);
 
     for(var i in time_formats){
       format = time_formats[i];
@@ -236,7 +256,7 @@
       }
     }
 
-    return time;
+    return time+' seconds';
   };
 
 })(jQuery, window);
