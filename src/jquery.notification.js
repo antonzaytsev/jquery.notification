@@ -24,8 +24,7 @@
     icon: undefined,
     color: undefined,
     error: false,
-    type: false,
-    showStyle: 'top' // left
+    type: false
   };
 
   $.notification.entypo = {
@@ -44,7 +43,8 @@
 
   $.notification.global = {
     limit: 5,
-    default_icon: 'message'
+    default_icon: 'message',
+    animation: 'css' // js or css
   };
 
   var Notific = function(settings){
@@ -183,18 +183,25 @@
   Notific.prototype.show = function(){
     var _this = this;
 
-    if ($(".notification", this.container).length == 0) {
-      this.block.addClass("flipInX");
+    if ($.notification.global.animation == 'css') {
+      if ($(".notification", this.container).length == 0) {
+        this.block.addClass("flipInX");
+      }
+      this.block.addClass("animated fadeInLeftMiddle fast");
+
+      setTimeout(function(){
+        _this.block.removeClass("flipInX animated fadeInLeftMiddle fast");
+      }, 500);
     }
-    this.block.addClass("animated fadeInLeftMiddle fast");
 
     if (this.block.parents().length == 0) {
       this.block.prependTo(this.container);
     }
 
-    setTimeout(function(){
-      _this.block.removeClass("flipInX animated fadeInLeftMiddle fast");
-    }, 500);
+    if ($.notification.global.animation == 'js') {
+      var b = this.block;
+      b.hide();
+    }
   };
 
   Notific.prototype.hide = function(){
