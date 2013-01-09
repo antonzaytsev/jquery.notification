@@ -3,7 +3,6 @@
   top: 20px;
   left: 50%;
   z-index: 1000;
-  overflow: hidden;
   width: 400px;
   margin-left: -200px;
 
@@ -25,10 +24,9 @@
   background: -o-linear-gradient(top, #ffffff 0%,#dbdbdb 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top, #ffffff 0%,#dbdbdb 100%); /* IE10+ */
   background: linear-gradient(to bottom, #ffffff 0%,#dbdbdb 100%); /* W3C */
-  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 ); *//* IE6-9 */
 
   position: relative;
-  border-top: 1px solid #c1c1c1;
+  /*border-top: 1px solid #c1c1c1;*/
 
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 12px;
@@ -36,11 +34,15 @@
   font-weight: normal;
 
   color: #000;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 1px #fff;
 
   -webkit-transition: border-bottom-left-radius .3s, border-bottom-right-radius .3s;
 
   *zoom: 1;
+}
+
+#notifications .notification a{
+  color: #000;
 }
 
 #notifications .notification:first-child{
@@ -91,6 +93,7 @@
   font-size: 13px;
   line-height: 15px;
   text-align: center;
+  text-shadow: none;
 
   -webkit-transition: opacity .2s;
 }
@@ -201,7 +204,7 @@
 #notifications .notification .right .time {
   font-size: 9px;
   margin-top: 2px;
-  opacity: 0.4;
+  color: rgb(150,150,150);
 }
 #notifications .notification .right .title {
   font-size: 14px;
@@ -239,18 +242,22 @@
 }
 
 #notifications .notification.type-error {
-  background: #fa565d; /* Old browsers */
+  background: #fa565d;
   background: -moz-linear-gradient(top, #fa565d 0%, #d1363d 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fa565d), color-stop(100%,#d1363d)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, #fa565d 0%,#d1363d 100%); /* Chrome10+,Safari5.1+ */
   background: -o-linear-gradient(top, #fa565d 0%,#d1363d 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top, #fa565d 0%,#d1363d 100%); /* IE10+ */
   background: linear-gradient(to bottom, #fa565d 0%,#d1363d 100%); /* W3C */
-  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa565d', endColorstr='#d1363d',GradientType=0 ); *//* IE6-9 */
 
   color: #fff;
   text-shadow: 0 1px 1px rgba(0,0,0,0.4);
 }
+
+#notifications .notification.type-error a{
+  color: #fff;
+}
+
 #notifications .notification.type-error .left:after {
   background: rgba(255,255,255,0.5);
   box-shadow: rgba(0,0,0,0.4) 0 1px 1px;
@@ -258,19 +265,24 @@
 #notifications .notification.type-error .close{
   color: white;
 }
+#notifications .notification.type-error .right .time{
+  color: white;
+}
 
 #notifications .notification.type-success {
-  background: #299a0b; /* Old browsers */
+  background: #299a0b;
   background: -moz-linear-gradient(top, #299a0b 0%, #299a0b 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#299a0b), color-stop(100%,#299a0b)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, #299a0b 0%,#299a0b 100%); /* Chrome10+,Safari5.1+ */
   background: -o-linear-gradient(top, #299a0b 0%,#299a0b 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top, #299a0b 0%,#299a0b 100%); /* IE10+ */
   background: linear-gradient(to bottom, #299a0b 0%,#299a0b 100%); /* W3C */
-  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#299a0b', endColorstr='#299a0b',GradientType=0 ); *//* IE6-9 */
 
   color: #fff;
   text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+}
+#notifications .notification.type-success a{
+  color: #fff;
 }
 #notifications .notification.type-success .left:after {
   background: rgba(255,255,255,0.5);
@@ -476,11 +488,11 @@
 
 @font-face {
   font-family: 'entypo';
-  src: url('font/entypo.eot');
-  src: url('font/entypo.eot?#iefix') format('embedded-opentype'),
-  url('font/entypo.woff') format('woff'),
-  url('font/entypo.ttf') format('truetype'),
-  url('font/entypo.svg#entypo') format('svg');
+  src: url('entypo/entypo.eot');
+  src: url('entypo/entypo.eot?#iefix') format('embedded-opentype'),
+  url('entypo/entypo.woff') format('woff'),
+  url('entypo/entypo.ttf') format('truetype'),
+  url('entypo/entypo.svg#entypo') format('svg');
   font-weight: normal;
   font-style: normal;
 }

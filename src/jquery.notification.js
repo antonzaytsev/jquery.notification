@@ -24,21 +24,7 @@
     icon: undefined,
     color: undefined,
     error: false,
-    type: false
-  };
-
-  $.notification.entypo = {
-    'thumbs-up' : '&#128077;',
-    'mobile'    : '&#128241;',
-    'warning'   : 'c', // &#9888;
-    'mail'      : '✉', // &#9993;
-    'clock'     : 'N',
-    'add_member': '&#x2010;',
-    'pictures'  : 'p',
-    'message'   : '',
-    'tick'      : 'W',
-    'cloud'     : 'y',
-    'pointer'   : 'G'
+    type: 'notice' // notice, error or success
   };
 
   $.notification.global = {
@@ -265,6 +251,21 @@
     }
 
     return time+' seconds';
+  };
+
+  $.notification.entypo = {
+    'clock'             : 'N',
+    'cloud'             : 'y',
+    'pictures'          : 'p',
+    'pointer'           : 'G',
+    'tick'              : 'W',
+    'warning'           : 'c',
+    'question'          : 'a',
+    'question-bg'       : 'b',
+    'folder'            : 's',
+    'spin'              : 'd',
+    'download'          : 'w',
+    'cloud-arrow'       : 'z'
   };
 
 })(jQuery, window);
